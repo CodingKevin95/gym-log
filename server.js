@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(cors());
 
-mongoose.connect('mongodb+srv://codingkevin95:kevin123@cluster0.eg9hmxt.mongodb.net/?retryWrites=true&w=majority').catch ((err) => console.log(err));
+mongoose.connect(process.env.MONGO_URI).catch ((err) => console.log(err));
 
 //DB Schema and model
 const postSchema = mongoose.Schema({
