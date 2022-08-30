@@ -10,10 +10,10 @@ app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(cors());
 
-mongoose.connect(process.env.MONGO_URI).catch((err) => console.log(err));
+// mongoose.connect(process.env.MONGO_URI).catch((err) => console.log(err));
 
-// mongoose.connect("mongodb://localhost:27017/myDB")
-// .catch ((err) => console.log(err));
+mongoose.connect("mongodb://localhost:27017/myDB")
+.catch ((err) => console.log(err));
 
 //DB Schema and model
 const postSchema = mongoose.Schema({
