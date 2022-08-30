@@ -9,7 +9,16 @@ app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(cors());
 
-mongoose.connect(process.env.MONGO_URI).catch((err) => console.log(err));
+// mongoose.connect(process.env.MONGO_URI).catch((err) => console.log(err));
+mongoose.connect(process.env.MONGO_URI)
+.then(() => {
+    app.listen(process.env.PORT, () => {
+        console.log("Server is running")
+    });
+})
+.catch((error) => {
+    console.log()
+})
 
 //DB Schema and model
 const postSchema = mongoose.Schema({
@@ -81,6 +90,6 @@ if (process.env.NODE_ENV === "production") {
     });
 }
 
-app.listen(process.env.PORT || 3001, function () {
-    console.log("Server is running")
-});
+// app.listen(process.env.PORT || 3001, function () {
+//     console.log("Server is running")
+// });
